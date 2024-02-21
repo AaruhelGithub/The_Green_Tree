@@ -6,9 +6,8 @@ from sklearn.preprocessing import PolynomialFeatures
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
-# Define a function to predict emissions
+# Function to predict emissions
 def predict_emissions(specific_country):
-    # Load and preprocess data
     df = pd.read_csv(r"C:\Users\arupe\Downloads\co-emissions-by-sector.csv", encoding="utf8")
     df.fillna(0, inplace=True)
 
@@ -16,7 +15,6 @@ def predict_emissions(specific_country):
     select_country.drop(select_country.columns[[0, 1]], axis=1, inplace=True)
     X = select_country.drop('Year', axis=1)
     y = select_country[select_country.columns[2]]
-    # Define dictionary to store predicted emissions
     predictions = {}
 
     for i in range(1, 9):
@@ -26,7 +24,7 @@ def predict_emissions(specific_country):
             y = select_country[select_country.columns[i]]
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=100)
 
-            # Define the degree of the polynomial
+            # Degree of the polynomial
             degree = 1
 
             # Polynomial feature transformation
@@ -59,12 +57,11 @@ def predict_emissions(specific_country):
 
     return predictions
 
-# Your view functions
+# Function that gives plant/tree related information.
 def process_input(request):
     if request.method == 'POST':
         input_data = request.POST.get('input_data')
         input_data_2 = request.POST.get('input_data_2')
-        # Process the input_data (e.g., perform some computation)
 
         import pandas as pd
         '''from google.colab import drive
@@ -72,7 +69,6 @@ def process_input(request):
         dff = pd.read_csv(r"C:\Users\arupe\Downloads\AQI and Lat Long of Countries.csv", encoding="utf8")
         dff.fillna(0, inplace=True)
 
-        # Get the city name from the user
         specific = input_data.title()
 
         if specific in dff['City'].values:
@@ -119,3 +115,5 @@ def input_page(request):
     # Render the loading page while processing
     return render(request, 'loading.html')
 
+'''ChatGPT was used to help combine both functions (i.e. CO2 emissions and plant/trees recommendations) in a single code
+and to help build the Polynomial regression ML model.'''
