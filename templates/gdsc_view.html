@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Green Tree</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Ariel, cursive;
+            background-image: url('https://images.unsplash.com/photo-1529025635398-c8844675ab65?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .header {
+            background-color: rgb(7, 101, 103,0.95);
+            color: rgb(234, 235, 213,0.9);
+            text-align: center;
+            padding: 57px;
+        }
+        .container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            height: 100vh; /* Set height to 100% of viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .textbox {
+            background-color: rgba(11, 122, 98, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+         button[type="submit"] {
+            background-color: #e5d082;
+            color: black;
+            border: none;
+            border-radius: 10%; /* Make the button round */
+            padding: 15px 30px; /* Adjust padding as needed */
+            cursor: pointer;
+            margin-top: 20px; /* Adjust this value to move the button down */
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            background-color: rgba(0, 128, 128, 0.7); /* Background color for "Hey there" text */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>The Green Tree</h1>
+    </div>
+    <div class="container">
+        <div class="textbox">
+            <form action="{% url 'process_input' %}" method="post">
+              {% csrf_token %}
+               <input type="text" name="input_data" placeholder="Enter your city here...">
+                <input type="text" name="input_data_2" placeholder="Enter your country here...">
+               <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="section">
+        <h1 style="color: black;">The Green Tree</h1>
+        <h4 style="color: black;">We focus on providing suggestions for indoor and outdoor plants that help you purify the air you breathe. We also provide projections for Carbon Dioxide emmisions of different industries in ourder to help figure our what can be done reduce pollution.</h4>
+    </div>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

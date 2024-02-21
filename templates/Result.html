@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Impactful Plants</title>
+    <style>
+        /* Your existing CSS styles */
+        body {
+            position: relative;
+            font-family: 'Comic Sans MS', cursive;
+            text-align: center;
+            color: white;
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.47);
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        .output-container {
+            margin-top: 20px;
+        }
+        /* Add table styling */
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 0 auto; /* Center the table */
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="overlay"></div>
+    <div class="content">
+        <h1>What makes an impact?</h1>
+        <div class="output-container">
+            <br>
+            <h3><p>Plant these in your houses and brighten your home with purified air : {{ output1 }}</p>
+                <p>Plant these trees in your surrounding area to reduce air pollution : {{ output2 }}</p>
+                <p>You can plant any of these indoor plants in your homes. Although it is advisable to plant the trees according to suitable climatic conditions.</p>
+            </h3>
+            <h4> The expected CO2 emissions by each sector in 2024 is :</h4>
+            <!-- Python dictionary table -->
+            <table>
+                <tr>
+                    <th> Sector </th>
+                    <th> Expected CO2 Emissions </th>
+                </tr>
+                {% for sector, emissions in output3.items %}
+                <tr>
+                    <td>{{ sector }}</td>
+                    <td>{{ emissions }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
